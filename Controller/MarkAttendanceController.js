@@ -7,6 +7,7 @@ const { DistanceCheck } = require("../Utils/MarkAttendanceUtils.js");
 
 exports.MarkTeamAttendance = catchAsyncError(async (req , res , next) => {
     res.status(200).json({
-        success: true
+        success: true,
+        message: "Mark Team Attendance"
     });
 });
