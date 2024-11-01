@@ -40,17 +40,23 @@ exports.MarkTeamAttendance = catchAsyncError(async (req, res, next) => {
 
             if (currtime >= starttime && currtime <= endtime) {
                 team.attendance = true;
-                console.log(team);
                 await team.save();
                 res.status(200).json({
                     success: true,
                     message: "Attendance marked successfully"
                 });
             } else {
-                res.status(400).json({
-                    success: false,
-                    message: "Event has not started yet."
-                });
+                if (currtime < starttime) {
+                    res.status(400).json({
+                        success: false,
+                        message: "Event has not started yet."
+                    });
+                } else if (currtime > endtime) {
+                    res.status(400).json({
+                        success: false,
+                        message: "Event has ended."
+                    });
+                }
             }
         }
     }
