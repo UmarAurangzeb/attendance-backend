@@ -10,6 +10,7 @@ require('dotenv').config();
 
 dbConnect();
 app.use(cors({ origin: '*' }));
+
 // define the routes import here
 const TeamRoutes = require("./Routes/TeamRoutes.js");
 const AdminRoutes = require("./Routes/AdminRoutes.js");
