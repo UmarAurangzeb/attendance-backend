@@ -1,4 +1,4 @@
-exports.DistanceCheck = (lat2 , lon2) => {
+exports.DistanceCheck = (lat2, lon2) => {
     const lat1 = process.env.LATITUDE;
     const lon1 = process.env.LONGITUDE;
 
