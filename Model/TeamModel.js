@@ -9,11 +9,11 @@ const TeamSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Leader_Name: {
+    Leader_name: {
         type: String,
         required: true,
     },
-    Leader_Email: {
+    Leader_email: {
         type: String,
         required: true,
     },

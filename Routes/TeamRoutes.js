@@ -3,6 +3,6 @@ const { MarkTeamAttendance } = require("../Controller/TeamController.js");
 
 const router = express.Router();
 
-router.route("/").post(MarkTeamAttendance);
+router.route("/").put(MarkTeamAttendance);
 
 module.exports = router;
