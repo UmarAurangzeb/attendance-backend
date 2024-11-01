@@ -5,11 +5,11 @@ const Middleware = require("./Middleware/Error");
 app.use(express.json());
 
 // define the routes import here
-const MarkAttendanceRoutes = require("./Routes/MarkAttendanceRoutes.js");
+const TeamRoutes = require("./Routes/TeamRoutes.js");
 const AdminRoutes = require("./Routes/AdminRoutes.js");
 
 // define the routes here
-app.use("/MarkAttendance" , MarkAttendanceRoutes);
+app.use("/MarkAttendance" , TeamRoutes);
 app.use("/Admin" , AdminRoutes);
 
 app.use(Middleware)

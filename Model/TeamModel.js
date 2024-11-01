@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MarkAttendanceSchema = new mongoose.Schema({
+const TeamSchema = new mongoose.Schema({
     consumerNumber: {
         type: String,
         required: true,
@@ -63,6 +63,6 @@ const MarkAttendanceSchema = new mongoose.Schema({
     }
 });
 
-const MarkAttendanceModel = new mongoose.model("MarkAttendance", MarkAttendanceSchema);
+const TeamModel = new mongoose.model("Team", TeamSchema);
 
-module.exports = MarkAttendanceModel;
+module.exports = TeamModel;
