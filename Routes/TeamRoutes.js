@@ -4,6 +4,6 @@ const { MarkTeamAttendance } = require("../Controller/TeamController.js");
 
 const router = express.Router();
 
-router.route("/").put(LimitSubmissions , MarkTeamAttendance);
+router.route("/").put(LimitSubmissions, MarkTeamAttendance);
 
 module.exports = router;
