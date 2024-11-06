@@ -22,7 +22,7 @@ exports.MarkTeamAttendance = catchAsyncError(async (req, res, next) => {
     const team = await Team.findOne({
         att_code: code
     });
-
+    console.log(team);
     if (!team) {
         return next(new ErrorHandler("Team doesn't exist", 404));
     } else {
