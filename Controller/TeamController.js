@@ -15,7 +15,7 @@ exports.MarkTeamAttendance = catchAsyncError(async (req, res, next) => {
     }
 
     const Distance = DistanceCheck(latitude, longitude);
-    if (Distance >= 1000) {
+    if (Distance >= 3000) {
         return next(new ErrorHandler("You are not in the vicinity of the event.", 400));
     }
 
