@@ -1,17 +1,30 @@
 const submissionLimits = {};
 
 const LimitSubmissions = (req, res, next) => {
-    const userId = req.ip;
+    const userCode = req.body.code; // Assuming the code is sent in the request body
+    // console.log(userCode);
+    const userIP = req.ip;
 
-    if (!submissionLimits[userId]) {
-        submissionLimits[userId] = { count: 0, timestamp: Date.now() };
+    if (!userCode) {
+        return res.status(400).json({
+            success: false,
+            message: "Unique code is required."
+        });
     }
 
-    const { count, timestamp } = submissionLimits[userId];
-    
+    // Combine IP and unique code to create a unique identifier
+    const identifier = `${userIP}-${userCode}`;
+
+    if (!submissionLimits[identifier]) {
+        submissionLimits[identifier] = { count: 0, timestamp: Date.now() };
+    }
+
+    const { count, timestamp } = submissionLimits[identifier];
+
+    // Reset count if the time window has passed (60 seconds)
     if (Date.now() - timestamp > 60000) {
-        submissionLimits[userId].count = 0;
-        submissionLimits[userId].timestamp = Date.now();    
+        submissionLimits[identifier].count = 0;
+        submissionLimits[identifier].timestamp = Date.now();
     }
 
     if (count >= 10) {
@@ -21,7 +34,7 @@ const LimitSubmissions = (req, res, next) => {
         });
     }
 
-    submissionLimits[userId].count += 1;
+    submissionLimits[identifier].count += 1;
     next();
 };
 
